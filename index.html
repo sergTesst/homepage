@@ -284,18 +284,21 @@
         <div class="container">
           <div class="row justify-content-center">
           <div class="col-lg-5 col-sm-7 page">
-            <form>
+            <form 
+                method="POST" 
+                action="https://formspree.io/f/myybqrep">
               <div class="form-group">
                 <label for="formNameInput">Enter your name</label>
                 <input type="text" class="form-control" id="formNameInput" placeholder="Your name">
               </div>
               <div class="form-group">
                 <label for="formEmail">Enter your email</label>
-                <input type="text" class="form-control" id="formEmail" placeholder="Your email">
+                <input  type="text" name="_replyto" class="form-control" id="formEmail" placeholder="Your email">
               </div>
               <div class="form-group">
                 <label for="formTextArea">Enter your feedback</label>
-                <textarea class="form-control" id="formTextArea" rows="3" placeholder="Give us your feedback"></textarea>
+                <textarea class="form-control"
+                    name="message" id="formTextArea" rows="3" placeholder="Give us your feedback"></textarea>
               </div>
               <div class="form-group clearfix submit-form">
                 <input type="submit" class="btn btn-success" value="Send"/>
