@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <title>Résumé</title>
 
-    <link rel="stylesheet" href="https://volodymyrkushnir.com/assets/stylesheets/base.css">
     <link rel="icon" href="./assets/images/favicon.ico" />
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" 
@@ -27,27 +26,29 @@
   <body>
     <main>
       <article>
-          <div class="page" style="border-color: midnightblue;">
+          <div class="container" style="border-color: midnightblue;">
               <!-- Content -->
 
-              <div class="stackable grid">
-                  <div class="row">
+              <div class="bordered animatedShadow mt-3">
+                  <div class="row justify-content-between">
 
-                      <div class="three wide center aligned column">
+                    <div class="col-sm-3">
                         <!-- Avatar -->
                         <div class="avatar-wrapper">
-                          <object class="avatar" data="./assets/images/avatar.jpg" role="img" aria-label="My profile picture"></object>
+                            <img class="avatar img img-fluid"  src="./assets/images/avatar.jpg" aria-label="My profile picture">
                         </div>
 
-                      </div>
+                    </div>
                       
-                      <div class="thirteen wide column">
-                          <div class="stackable grid">
-                              <div class="sixteen wide column">
-                                <!-- Name, job, contacts -->
-                                <h1 class="name">Kuzmych Serhii</h1>
+                    <div class="col-sm-9">
 
-                                <ul class="contacts">
+                        <div class="row">
+
+                            <div class="col-sm-12">
+                                <!-- Name, job, contacts -->
+                                <h1 class="display-3">Kuzmych Serhii</h1>
+                                <!-- d-flex justify-content-between -->
+                                <ul class="contacts clearfix">
                                     <li>
                                         <a href="https://www.linkedin.com/in/serhiikuzmych/" rel="author" class="linkedin">
                                             <svg 
@@ -98,43 +99,41 @@
                                         </a>
                                     </li>
                                     <li>
-                                      <div class="like-widget">
+                                    <div class="like-widget">
                                         <span  class="like-txt">Likes <span id="likeCounter"></span></span>
                                         <span id="heartClick" class="like-heart">
-                                          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"  viewBox="0 0 16 16">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"  viewBox="0 0 16 16">
                                             <path fill="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
-                                          </svg>
+                                        </svg>
                                         </span>
                                         
-                                      </div>
+                                    </div>
                                     </li>
                                 </ul>
-                              </div>
+                                
+                                <div class="m-3 about">
+                                    <!-- Intro -->
+                                    <h2 class="display-3">Résumé</h2>
 
-                              <div class="sixteen wide mobile only column">
-                                  <div class="divider"></div>
-                              </div>
+                                    <p class="fs-3">&mdash; Hello! I have been programming for 4 years. <br> 
+                                            I have experience with .net, database, front-end. <br>
+                                            My desire is to build applications using most of my skills.
+                                    </p>
+                                </div>
 
-                              <div class="sixteen wide column">
-                                  <!-- Intro -->
-                                  <h2>Résumé</h2>
-                                  <p>&mdash; Hello! I have been programming for 4 years. <br> 
-                                        I have experience with .net, database, front-end. <br>
-                                        My desire is to build applications using all my skills.
-                                  </p>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
+                            </div>
 
-                  <div class="row">
-                      <div class="sixteen wide column">
-                          <div class="fat divider"></div>
-                      </div>
-                  </div>
+                        </div>
+
+                    </div>
 
                   <div class="row">
-                    <div class="ten wide column">
+                      <hr>
+                  </div>
+
+                  <div class="row gap-2 justify-content-between">
+
+                    <div class="col-sm-6">
                         <!-- Experience -->
 
                           <ul class="timeline">
@@ -143,7 +142,10 @@
 
                               <ul>
                                   <li>
-                                    <a href="https://github.com/sergiycheck/react-user-gallery">react user gallery</a><br>
+                                    <div class="project-container">
+                                        <a href="https://github.com/sergiycheck/react-user-gallery">user gallery</a>
+                                    </div>
+                                    
                                     <div>
                                         <p>
                                             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">javascript</a>
@@ -153,7 +155,11 @@
                                     
                                 </li>
                                 <li>
-                                    <a href="https://github.com/sergiycheck/VehiclesWebApi">vehicles web api</a>
+                                    <div class="project-container">
+                                        <a href="https://github.com/sergiycheck/VehiclesWebApi">vehicles web api</a>
+
+                                    </div>
+
                                     <div>
                                         <p>
                                             <a href="https://docs.microsoft.com/en-us/aspnet/core/?view=aspnetcore-5.0">asp.net core</a>
@@ -165,15 +171,22 @@
                                     </div>
                                 </li>
                                 <li>
+                                    <div class="project-container">
                                     <a href="https://github.com/sergiycheck/vehiclesFront">angular vehicles web app</a>
+
+                                    </div>
                                     <div>
                                         <p>
                                             <a href="https://angular.io/guide/what-is-angular">angular</a>
+                                            <a href="https://www.typescriptlang.org/">typescript</a>
                                         </p>
                                     </div>
                                 </li>
                                 <li>
-                                    <a href="https://github.com/sergiycheck/user-gallery">static web page with links</a>
+                                    <div class="project-container">
+                                        <a href="https://github.com/sergiycheck/user-gallery">static web page with links</a>
+                                    </div>
+
                                     <div>
                                         <p>
                                             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">javascript</a>
@@ -185,10 +198,10 @@
                                 </li>
                                 
                                   <li class="details">
-                                      <input type="checkbox" id="other">
+                                      <input type="checkbox" id="labs-check">
                                     
-                                      <label for="other" class="summary">University labs abstract</label>
-                                      <div>
+                                      <label for="labs-check" class="summary">University labs abstract</label>
+                                      <div class="labs-content">
                                           <ul>
                                               <li>Build websites using html, css, js and frameworks</li>
                                               <li>Learn about it infrastructure</li>
@@ -206,24 +219,25 @@
 
                     </div>
 
-                    <div class="six wide column">
+                    <div class="col-sm-5">
                       <!-- Languages -->
                       <section>
                           <h3>Languages</h3>
-                          <p class="tags small">
-                              <a href="/uk-ua" hreflang="uk" rel="alternate" class="language" lang="uk">
-                                  &#x1f1fa;&#x1f1e6; 
-                                  <span>УКРАЇНСЬКА</span>
-                              </a> 
+                          <p class="d-flex justify-content-between align-items-center">
 
-                              <a href="/ru-ru" hreflang="ru" rel="alternate" class="language" lang="ru">
-                                  &#x1f1f7;&#x1f1fa; 
-                                  <span>РУССКИЙ</span>
-                              </a>
-                              <a href="/en-en" class="language" lang="en">
-                                  &#x1f1fa;&#x1f1f8; ENGLISH 
-                                  <span class="text-muted">(intermediate)</span>
-                              </a>
+                            <span class="chars">&#x1f1fa;&#x1f1e6;</span> 
+                            <a href="/uk-ua" hreflang="uk" rel="alternate" class="language" lang="uk">
+                                <span>УКРАЇНСЬКА</span>
+                            </a> 
+                            <span class="chars">&#x1f1f7;&#x1f1fa;</span> 
+                            <a href="/ru-ru" hreflang="ru" rel="alternate" class="language" lang="ru">    
+                                <span>РУССКИЙ</span>
+                            </a>
+                            <span class="chars">🇬🇧</span>
+                            <a href="/en-en" class="language" lang="en">
+                                <span>ENGLISH </span>   
+                                <span class="text-muted">(intermediate)</span>
+                            </a>
                           </p>
                       </section>
 
@@ -276,7 +290,10 @@
                       <!-- Character -->
 
                       <section>
-                          <h3>Character</h3>
+                          <h3>Character 
+                              <span class="chars">♂</span>  
+                            </h3>
+                          
                           <p class="tags small">
                               LEARNER  
                               DEVOTED CONFIDENT CONSISTENT CHALLENGING
