@@ -1,4 +1,4 @@
-# homepage
+# Resume
 
 Tecnologies: html, css, js, bootstrap.
 Run command ` lite-server baseDir=. `
