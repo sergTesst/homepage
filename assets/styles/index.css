@@ -51,3 +51,143 @@ div p a{
   text-decoration: none;
   color: rgb(140, 140, 140);
 }
+
+.animatedShadow{
+
+  transition-timing-function:ease-in-out;
+  transition: box-shadow 0.5s;
+}
+.animatedShadow:hover{
+  box-shadow: 0 55px 50px 0 rgba(0, 0, 0, 0.2), 
+    0 30px 30px 0 rgba(0, 0, 0, 0.19);
+}
+
+.bordered{
+
+  border-color: midnightblue;
+  border-style: solid;
+  border-width: 20px;
+  padding: 2em;
+  border-radius: 10px;
+}
+
+
+
+li > a > svg{
+  width: 20px;
+  height: 20px;
+  vertical-align: top;
+}
+.contacts{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+ul{
+  list-style: none;
+}
+ul{
+  margin: 0;
+  padding: 0;
+}
+
+.contacts > li {  
+  float: left;
+  margin: 5px;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.about > p{
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.chars{
+  vertical-align: text-top;
+  min-height: 20px;
+  text-decoration: none;
+  color: #ccc;
+  font-size: 36px;
+  text-align: center;
+  font-family: "Noto Color Emoji", "Apple Color Emoji", "Segoe UI Emoji", Times, Symbola, Aegyptus, Code2000, Code2001, Code2002, Musica, serif, LastResort;
+}
+
+/* .timeline > li >ul > li {
+  display: flex;
+  flex-direction: column;
+} */
+
+.timeline > li >ul> li:nth-last-child(1){
+  display: block;
+}
+
+.timeline > li >ul > li .project-container{
+  display: block;
+  /* width: max-content;
+  width:400px; */
+  background-color: black;
+  border-radius: 5px;
+  padding: 5px;
+  transition-timing-function:ease-in-out !important;
+  transition: all  0.5s;
+  transform: skewX(-15deg);
+}
+
+.timeline > li >ul > li > div > a {
+  color: white;
+  /* font-size:x-large; */
+  font-size: 24px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+
+
+
+.timeline > li >ul > li > div > p {
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 0;
+}
+
+.timeline > li >ul > li > div > p > a {
+  
+  text-transform: uppercase;
+  color:white;
+  background-color: rgba(153, 0, 255, 0.517);
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+  transition-timing-function:cubic-bezier(0.55, 0.085, 0.68, 0.53);
+  transition: scale 0.5s;
+  box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2), 
+   0 5px 5px 0 rgba(0, 0, 0, 0.19);
+  
+}
+.timeline > li >ul > li > div > p > a:hover{
+
+  scale: 1.2;
+}
+
+.labs-content{
+  display: block;
+  /* height: 0; */
+  animation: 2s ease-in-out;
+  transition-timing-function: ease-out;
+  font-size:0;
+  transition: font-size 0.5s;
+}
+
+/* .labs-content > ul {
+  height: 0; 
+}
+.labs-content > ul > li {
+  height: 0; 
+  display: none; 
+}  */
+
