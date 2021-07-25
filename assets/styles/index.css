@@ -190,4 +190,7 @@ ul{
   height: 0; 
   display: none; 
 }  */
-
+.avatar{
+  border-radius: 15px;
+  margin-bottom: 0.3em;
+}
