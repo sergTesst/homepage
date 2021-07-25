@@ -1,5 +1,7 @@
 "use strict";
 
+const cl = console.log;
+
 document.addEventListener('DOMContentLoaded', function(event){
     updateDisplay();
 });
@@ -67,26 +69,55 @@ Array.prototype.forEach.call(projContainers,(projCont)=>{
 
 })
 
-const LangConfigArray = [
-    {javascript:'#efd81d'},
-    {react:'#61dafb'},
-    {'asp.net core':'#592c8c'},
-    {'entity framework':'#652076'},
-    {swagger:'#6a9500'},
-    {docker:'#2391e6'},
-    {xunit:'black'},
-    {angular:'#c3002f'},
-    {vue:'#3fb27f'}
-];
+const LangConfigObj = {
+    javascript:'#efd81d',
+    react:'#61dafb',
+    ['asp.net core']:'#592c8c',
+    ['entity framework core']:'#652076',
+    swagger:'#6a9500',
+    docker:'#2391e6',
+    xunit:'black',
+    angular:'#c3002f',
+    vue:'#3fb27f',
+    typescript: `#2f74c0`,
+};
 
 function setRightColorForElements(){
     const timeLineCont = document.querySelector('.timeline');
-    const childNodes = timeLineCont.childNodes;
+    const children = timeLineCont.children;
+    // cl('children ', children);
+    const allLinks = timeLineCont.querySelectorAll(`a[href]`)
+    // cl(`allLinks `,allLinks);
+    cl(`Object.keys(LangConfigObj)`, Object.keys(LangConfigObj));
+    setColourForLinks(allLinks)
+    function setColourForLinks(links){
+        Array.from(links).forEach(link=>{
+            let innerHTMLOfLink = link.innerHTML.trim().toLowerCase();
+            // cl(` link.innerHTML.trim().toLowerCase() `,innerHTMLOfLink);
+            
+            if(Object.keys(LangConfigObj).includes(innerHTMLOfLink)){
 
-    function traversThroughChildNodes(childNodes){
-        
+                // cl(`innerHTMLOfLink, LangConfigObj[innerHTMLOfLink] `,
+                //     innerHTMLOfLink, LangConfigObj[innerHTMLOfLink]);
+
+                link.style.backgroundColor  = `${LangConfigObj[innerHTMLOfLink]}`;
+            }
+        })
+    }
+
+    // traverseChildren(timeLineCont);
+
+    function traverseChildren(elem){
+        if(elem.tagName === 'A')
+            cl(elem, elem.tagName);
+        if(!elem.children.length)
+            return;
+        Array.from(elem.children).forEach(child=>{
+            traverseChildren(child)
+        })
     }
 }
+setRightColorForElements()
 
 
 
