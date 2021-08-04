@@ -85,21 +85,12 @@ const LangConfigObj = {
 function setRightColorForElements(){
     const timeLineCont = document.querySelector('.timeline');
     const children = timeLineCont.children;
-    // cl('children ', children);
     const allLinks = timeLineCont.querySelectorAll(`a[href]`)
-    // cl(`allLinks `,allLinks);
-    cl(`Object.keys(LangConfigObj)`, Object.keys(LangConfigObj));
     setColourForLinks(allLinks)
     function setColourForLinks(links){
         Array.from(links).forEach(link=>{
-            let innerHTMLOfLink = link.innerHTML.trim().toLowerCase();
-            // cl(` link.innerHTML.trim().toLowerCase() `,innerHTMLOfLink);
-            
+            let innerHTMLOfLink = link.innerHTML.trim().toLowerCase();       
             if(Object.keys(LangConfigObj).includes(innerHTMLOfLink)){
-
-                // cl(`innerHTMLOfLink, LangConfigObj[innerHTMLOfLink] `,
-                //     innerHTMLOfLink, LangConfigObj[innerHTMLOfLink]);
-
                 link.style.backgroundColor  = `${LangConfigObj[innerHTMLOfLink]}`;
             }
         })
