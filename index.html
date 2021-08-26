@@ -26,7 +26,7 @@
   <body>
     <main>
       <article>
-          <div class="container" style="border-color: midnightblue;">
+          <div class="container " >
               <!-- Content -->
 
               <div class="bordered animatedShadow mt-3">
@@ -118,7 +118,7 @@
                                     <h2 class="display-3">Trainee Front-end (React) developer</h2>
 
                                     <p class="fs-3">&mdash; Hello! I have been programming for 4 years. <br> 
-                                            I have experience with .net, database, front-end. <br>
+                                            I have experience with front-end and databases <br>
                                             My desire is to build applications using most of my skills.
                                     </p>
                                 </div>
@@ -135,7 +135,7 @@
 
                   <div class="row gap-2 justify-content-between">
 
-                    <div class="col-sm-6">
+                    <div class="col-sm-6 parent-max-width">
                         <!-- Experience -->
 
                           <ul class="timeline">
@@ -156,22 +156,7 @@
                                     </div>
                                     
                                 </li>
-                                <li>
-                                    <div class="project-container">
-                                        <a href="https://github.com/sergiycheck/VehiclesWebApi">vehicles web api</a>
 
-                                    </div>
-
-                                    <div>
-                                        <p>
-                                            <a href="https://docs.microsoft.com/en-us/aspnet/core/?view=aspnetcore-5.0">asp.net core</a>
-                                            <a href="https://docs.microsoft.com/en-us/ef/core/">entity framework core</a>  
-                                            <a href="https://swagger.io/">swagger</a>  
-                                            <a href="https://docs.docker.com/">docker</a>
-                                            <a href="https://xunit.net/">xUnit</a>
-                                        </p>
-                                    </div>
-                                </li>
                                 <li>
                                     <div class="project-container">
                                     <a href="https://github.com/sergiycheck/vehiclesFront">angular vehicles web app</a>
@@ -225,22 +210,33 @@
                       <!-- Languages -->
                       <section>
                           <h3>Languages</h3>
-                          <p class="d-flex justify-content-between align-items-center">
-
-                            <span class="chars">&#x1f1fa;&#x1f1e6;</span> 
-                            <a href="/uk-ua" hreflang="uk" rel="alternate" class="language" lang="uk">
-                                <span>УКРАЇНСЬКА</span>
-                            </a> 
-                            <span class="chars">&#x1f1f7;&#x1f1fa;</span> 
-                            <a href="/ru-ru" hreflang="ru" rel="alternate" class="language" lang="ru">    
+                          <div class="row justify-content-between gap-2">
+														<div class="col-md-3 col-sm-12">
+															<span class="chars">&#x1f1fa;&#x1f1e6;</span> 
+															<a 
+																href="/uk-ua" hreflang="uk" rel="alternate" 
+																class="language" lang="uk">
+																	<span>УКРАЇНСЬКА</span>
+															</a>
+														</div>
+														<div class="col-md-3 col-sm-12">
+															<span class="chars">&#x1f1f7;&#x1f1fa;</span> 
+                            <a 
+															href="/ru-ru" hreflang="ru" rel="alternate" 
+															class="language" lang="ru">    
                                 <span>РУССКИЙ</span>
                             </a>
-                            <span class="chars">🇬🇧</span>
-                            <a href="/en-en" class="language" lang="en">
-                                <span>ENGLISH </span>   
-                                <span class="text-muted">(intermediate)</span>
-                            </a>
-                          </p>
+														</div>
+														<div class="col-md-3 col-sm-12">
+
+															<span class="chars">🇬🇧</span>
+															<a href="/en-en" class="language" lang="en">
+																	<span>ENGLISH </span>   
+																	<span class="text-muted">(intermediate)</span>
+															</a>
+														</div>
+
+                          </div>
                       </section>
 
 
@@ -356,7 +352,7 @@
 
         <div class="container">
           <div class="row justify-content-center">
-          <div class="col-lg-5 col-sm-7 page">
+          <div class="col-lg-5 col-sm-7 page p-5">
             <form 
                 method="POST" 
                 action="https://formspree.io/f/myybqrep">
@@ -373,8 +369,8 @@
                 <textarea class="form-control"
                     name="message" id="formTextArea" rows="3" placeholder="Give us your feedback"></textarea>
               </div>
-              <div class="form-group clearfix submit-form">
-                <input type="submit" class="btn btn-success" value="Send"/>
+              <div class="form-group clearfix submit-form m-3">
+                <input type="submit" class="btn-lg btn-success " value="Send"/>
               </div>
               
             </form>

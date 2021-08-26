@@ -6,6 +6,7 @@ article{
   padding: 0 3vw 0 3vw;
 }
 
+
 @media only screen and (min-width: 1199px){
   .contacts{
     align-items: center;
@@ -52,24 +53,33 @@ div p a{
   color: rgb(140, 140, 140);
 }
 
-.animatedShadow{
 
-  transition-timing-function:ease-in-out;
-  transition: box-shadow 0.5s;
-}
-.animatedShadow:hover{
-  box-shadow: 0 55px 50px 0 rgba(0, 0, 0, 0.2), 
-    0 30px 30px 0 rgba(0, 0, 0, 0.19);
+
+
+@media only screen and (min-width: 1000px){
+
+  .bordered{
+    border-color: midnightblue;
+    border-style: solid;
+    border-width: 20px;
+    padding: 2em;
+    border-radius: 10px;
+  }
+
+  .animatedShadow{
+
+    transition-timing-function:ease-in-out;
+    transition: box-shadow 0.5s;
+  }
+  .animatedShadow:hover{
+    box-shadow: 0 55px 50px 0 rgba(0, 0, 0, 0.2), 
+      0 30px 30px 0 rgba(0, 0, 0, 0.19);
+  }
+
 }
 
-.bordered{
 
-  border-color: midnightblue;
-  border-style: solid;
-  border-width: 20px;
-  padding: 2em;
-  border-radius: 10px;
-}
+
 
 
 
@@ -127,22 +137,27 @@ ul{
 
 .timeline > li >ul > li .project-container{
   display: block;
-  /* width: max-content;
-  width:400px; */
   background-color: black;
   border-radius: 5px;
   padding: 5px;
-  transition-timing-function:ease-in-out !important;
-  transition: all  0.5s;
+  transition: all  0.5s linear;
   transform: skewX(-15deg);
+  width: 350px;
+
+}
+
+@media only screen and (max-width: 770px){
+  .project-container{
+    width: fit-content!important;
+  }
 }
 
 .timeline > li >ul > li > div > a {
   color: white;
-  /* font-size:x-large; */
   font-size: 24px;
   text-decoration: none;
   text-transform: uppercase;
+  transition: all  0.5s linear;
 }
 
 
