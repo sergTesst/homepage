@@ -19,6 +19,7 @@ heart.addEventListener("click", () => {
   }
   updateDisplay();
 });
+
 heart.addEventListener("dblclick", () => {
   sessionStorage.clear();
   count = 0;
@@ -32,10 +33,7 @@ function updateDisplay() {
 
 document.querySelector("#labs-check").addEventListener("click", (event) => {
   const divLabsCont = document.querySelector(".labs-content");
-  // console.log(divLabsCont.style.display,
-  //      divLabsCont.style.height,
-  //      divLabsCont.style.fontSize
-  //      )
+
   if (divLabsCont.style.fontSize == "") {
     divLabsCont.style.fontSize = "medium";
   } else {
@@ -43,23 +41,9 @@ document.querySelector("#labs-check").addEventListener("click", (event) => {
   }
 });
 
-const sleep = (ms) => {
-  cl("sleeping");
-  return new Promise((resolve) => setTimeout(resolve, ms));
-};
-
 const projContainers = document.querySelectorAll(".project-container");
 Array.prototype.forEach.call(projContainers, (projCont) => {
-  
   const aEl = projCont.querySelector("a");
-
-  // const aString = aEl.innerHTML;
-  // const arrLength = Array.from(aString).length;
-  // const width = arrLength * 14;
-  // const widthPx = `${width}px`;
-
-  // projCont.style.width = widthPx;
-  // console.log('projCont width', projCont, widthPx);
 
   function addListenersForElement(elem, container) {
     elem.addEventListener("mouseover", async (_) => {
@@ -92,7 +76,6 @@ const LangConfigObj = {
 
 function setRightColorForElements() {
   const timeLineCont = document.querySelector(".timeline");
-  const children = timeLineCont.children;
   const allLinks = timeLineCont.querySelectorAll(`a[href]`);
   setColourForLinks(allLinks);
   function setColourForLinks(links) {
@@ -103,15 +86,112 @@ function setRightColorForElements() {
       }
     });
   }
-
-  // traverseChildren(timeLineCont);
-
-  function traverseChildren(elem) {
-    if (elem.tagName === "A") cl(elem, elem.tagName);
-    if (!elem.children.length) return;
-    Array.from(elem.children).forEach((child) => {
-      traverseChildren(child);
-    });
-  }
 }
 setRightColorForElements();
+
+function formOpportunityOfferValidation() {
+  const form = document.forms.opportunityOffer;
+
+  const {
+    formNameInput: name,
+    message,
+    _replyto: email,
+    submit,
+  } = form.elements;
+
+  function disableSubmit() {
+    submit.setAttribute("disabled", true);
+  }
+  disableSubmit();
+
+  const checkElementValueInEmpty = (elem) => Boolean(!elem.value.trim());
+
+  form.addEventListener("focusout", focusOutHandler);
+  function focusOutHandler(e) {
+    const { target: focusOutElement } = e;
+    addWarningIfEmpty(focusOutElement);
+    let elementIsEmail = focusOutElement === email;
+    if (elementIsEmail) handlerEmailValid();
+  }
+
+  function handlerEmailValid() {
+    let isEmailValid = checkEmailValueValid(email.value.trim());
+    let emailIsEmpty = Boolean(checkElementValueInEmpty(email));
+    addOrRemoveEmailWarning(isEmailValid, emailIsEmpty);
+  }
+
+  function addOrRemoveEmailWarning(isEmailValid, emailIsEmpty) {
+    let emailWarningEl = email
+      .closest(".form-group")
+      .querySelector(".invalid-feedback");
+    if (!isEmailValid && !emailIsEmpty) {
+      emailWarningEl.innerText =
+        "Please provide a valid email like name@domain.com";
+      emailWarningEl.style.display = "block";
+    } else {
+      if (emailWarningEl.style.display === "block")
+        emailWarningEl.style.display = "none";
+    }
+  }
+
+  function addWarningIfEmpty(elem) {
+    const elementValueIsEmpty = checkElementValueInEmpty(elem);
+    if (elementValueIsEmpty) {
+      if (!elem.classList.contains("warning")) {
+        elem.classList.add("warning");
+        return true;
+      }
+      return true;
+    }
+    return false;
+  }
+
+  form.addEventListener("keydown", keyUpDownInputHandler);
+  form.addEventListener("keyup", keyUpDownInputHandler);
+  form.addEventListener("input", keyUpDownInputHandler);
+  function keyUpDownInputHandler(e) {
+    const { target: inputingelem } = e;
+    if (checkElementValueInEmpty(inputingelem)) {
+      inputingelem.classList.remove("warning");
+    }
+
+    checkFormElementsAreValid();
+  }
+
+  let allFormElementsAreValid = false;
+  function checkFormElementsAreValid() {
+    let isEmailValid = checkEmailValueValid(email.value.trim());
+    let emailIsEmpty = Boolean(checkElementValueInEmpty(email));
+    allFormElementsAreValid = Boolean(
+      !checkElementValueInEmpty(name) &&
+        !emailIsEmpty &&
+        !checkElementValueInEmpty(message) &&
+        isEmailValid
+    );
+    if (allFormElementsAreValid) {
+      submit.removeAttribute("disabled");
+    } else {
+      disableSubmit();
+      removeEmailWarning(isEmailValid, emailIsEmpty);
+    }
+  }
+  function removeEmailWarning(isEmailValid, emailIsEmpty) {
+    let emailWarningEl = email
+      .closest(".form-group")
+      .querySelector(".invalid-feedback");
+    if (isEmailValid && !emailIsEmpty) {
+      if (emailWarningEl.style.display === "block")
+        emailWarningEl.style.display = "none";
+    }
+  }
+
+  function checkEmailValueValid(emailVal) {
+    let notAnyWhiteSpaceAndAtSignOneUnlimited = "[^s@]+";
+    let completeRegEx = `^${notAnyWhiteSpaceAndAtSignOneUnlimited}@${notAnyWhiteSpaceAndAtSignOneUnlimited}\\.${notAnyWhiteSpaceAndAtSignOneUnlimited}$`;
+    const regularEx = new RegExp(completeRegEx);
+    let isEmailValid = regularEx.test(emailVal);
+
+    return isEmailValid;
+  }
+}
+formOpportunityOfferValidation();
