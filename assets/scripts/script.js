@@ -1,29 +1,7 @@
 "use strict";
 
-const cl = console.log;
-
 document.addEventListener("DOMContentLoaded", function (event) {
   updateDisplay();
-});
-
-const heart = document.getElementById("heartClick");
-let count = sessionStorage.getItem("likesCount");
-if (count == undefined || count == null || count == NaN) {
-  count = 0;
-}
-
-heart.addEventListener("click", () => {
-  count++;
-  if (typeof Storage !== "undefined") {
-    sessionStorage.setItem("likesCount", count);
-  }
-  updateDisplay();
-});
-
-heart.addEventListener("dblclick", () => {
-  sessionStorage.clear();
-  count = 0;
-  document.getElementById("likeCounter").innerHTML = "";
 });
 
 function updateDisplay() {
@@ -31,68 +9,91 @@ function updateDisplay() {
   likesSpan.innerHTML = sessionStorage.getItem("likesCount");
 }
 
-document.querySelector("#labs-check").addEventListener("click", (event) => {
-  const divLabsCont = document.querySelector(".labs-content");
-
-  if (divLabsCont.style.fontSize == "") {
-    divLabsCont.style.fontSize = "medium";
-  } else {
-    divLabsCont.style.fontSize = "";
+(function incrementHeart() {
+  const heart = document.getElementById("heartClick");
+  let count = sessionStorage.getItem("likesCount");
+  if (!count) {
+    count = 0;
   }
-});
 
-const projContainers = document.querySelectorAll(".project-container");
-Array.prototype.forEach.call(projContainers, (projCont) => {
-  const aEl = projCont.querySelector("a");
+  heart.addEventListener("click", () => {
+    count++;
+    sessionStorage.setItem("likesCount", count);
+    updateDisplay();
+  });
 
-  function addListenersForElement(elem, container) {
-    elem.addEventListener("mouseover", async (_) => {
-      if (document.documentElement.clientWidth > 1000) {
-        container.style.width = "100%";
-      }
-    });
+  heart.addEventListener("dblclick", () => {
+    sessionStorage.clear();
+    count = 0;
+    document.getElementById("likeCounter").innerHTML = "";
+  });
+})();
 
-    elem.addEventListener("mouseout", async (_) => {
-      if (document.documentElement.clientWidth > 1000) {
-        container.style.width = "";
-      }
-    });
-  }
-  addListenersForElement(aEl, projCont);
-});
+(function increaseDecreaseLabsInfoList() {
+  document.querySelector("#labs-check").addEventListener("click", (event) => {
+    const divLabsCont = document.querySelector(".labs-content");
 
-const LangConfigObj = {
-  javascript: "#efd81d",
-  react: "#61dafb",
-  ["asp.net core"]: "#592c8c",
-  ["entity framework core"]: "#652076",
-  swagger: "#6a9500",
-  docker: "#2391e6",
-  xunit: "black",
-  angular: "#c3002f",
-  vue: "#3fb27f",
-  typescript: `#2f74c0`,
-  miragejs: `#05c77e`,
-  redux: `#764abc`,
-  firebase: `#ffcb2b`,
-};
+    if (divLabsCont.style.fontSize == "") {
+      divLabsCont.style.fontSize = "medium";
+    } else {
+      divLabsCont.style.fontSize = "";
+    }
+  });
+})();
 
-function setRightColorForElements() {
+(function animateProjectBackgroundOnMouseOver() {
+  const projContainers = document.querySelectorAll(".project-container");
+  Array.prototype.forEach.call(projContainers, (projCont) => {
+    const aEl = projCont.querySelector("a");
+
+    function addListenersForElement(elem, container) {
+      elem.addEventListener("mouseover", async (_) => {
+        if (document.documentElement.clientWidth > 1000) {
+          container.style.width = "100%";
+        }
+      });
+
+      elem.addEventListener("mouseout", async (_) => {
+        if (document.documentElement.clientWidth > 1000) {
+          container.style.width = "";
+        }
+      });
+    }
+    addListenersForElement(aEl, projCont);
+  });
+})();
+
+(function setRightColorForTechnologies() {
+  const langConfigObj = {
+    javascript: "#efd81d",
+    react: "#61dafb",
+    ["asp.net core"]: "#592c8c",
+    ["entity framework core"]: "#652076",
+    swagger: "#6a9500",
+    docker: "#2391e6",
+    xunit: "black",
+    angular: "#c3002f",
+    vue: "#3fb27f",
+    typescript: `#2f74c0`,
+    miragejs: `#05c77e`,
+    redux: `#764abc`,
+    firebase: `#ffcb2b`,
+  };
+
   const timeLineCont = document.querySelector(".timeline");
   const allLinks = timeLineCont.querySelectorAll(`a[href]`);
   setColourForLinks(allLinks);
   function setColourForLinks(links) {
     Array.from(links).forEach((link) => {
       let innerHTMLOfLink = link.innerHTML.trim().toLowerCase();
-      if (Object.keys(LangConfigObj).includes(innerHTMLOfLink)) {
-        link.style.backgroundColor = `${LangConfigObj[innerHTMLOfLink]}`;
+      if (Object.keys(langConfigObj).includes(innerHTMLOfLink)) {
+        link.style.backgroundColor = `${langConfigObj[innerHTMLOfLink]}`;
       }
     });
   }
-}
-setRightColorForElements();
+})();
 
-function formOpportunityOfferValidation() {
+(function formOpportunityOfferValidation() {
   const form = document.forms.opportunityOffer;
 
   const {
@@ -196,5 +197,4 @@ function formOpportunityOfferValidation() {
 
     return isEmailValid;
   }
-}
-formOpportunityOfferValidation();
+})();
