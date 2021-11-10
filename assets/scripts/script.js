@@ -72,6 +72,9 @@ const LangConfigObj = {
   angular: "#c3002f",
   vue: "#3fb27f",
   typescript: `#2f74c0`,
+  miragejs: `#05c77e`,
+  redux: `#764abc`,
+  firebase: `#ffcb2b`,
 };
 
 function setRightColorForElements() {
