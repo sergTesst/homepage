@@ -30,15 +30,31 @@ function updateDisplay() {
 })();
 
 (function increaseDecreaseLabsInfoList() {
-  document.querySelector("#labs-check").addEventListener("click", (event) => {
-    const divLabsCont = document.querySelector(".labs-content");
-
-    if (divLabsCont.style.fontSize == "") {
-      divLabsCont.style.fontSize = "medium";
-    } else {
-      divLabsCont.style.fontSize = "";
-    }
+  document.querySelector("#labs-check").addEventListener("click", (e) => {
+    let target = e.target;
+    if (!target.id) target = target.closest("#labs-check");
+    let chevron = target.querySelector(
+      `i[class^='bi-chevron'], i[class*='bi-chevron']`
+    );
+    changeChevron(chevron);
+    toggleShow();
   });
+
+  function changeChevron(target) {
+    let targetClasses = target.classList;
+    if (targetClasses.contains("bi-chevron-down")) {
+      targetClasses.remove("bi-chevron-down");
+      targetClasses.add("bi-chevron-up");
+    } else if (targetClasses.contains("bi-chevron-up")) {
+      targetClasses.remove("bi-chevron-up");
+      targetClasses.add("bi-chevron-down");
+    }
+  }
+
+  function toggleShow() {
+    const divLabsCont = document.querySelector(".labs-content");
+    divLabsCont.classList.toggle("show");
+  }
 })();
 
 (function animateProjectBackgroundOnMouseOver() {
