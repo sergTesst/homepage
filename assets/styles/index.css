@@ -180,10 +180,10 @@ ul {
 
 .labs-content {
   display: block;
-  animation: 2s ease-in-out;
-  transition-timing-function: ease-out;
-  font-size: 0;
-  transition: font-size 0.5s;
+  transition: all 0.35s;
+}
+.labs-content:not(.show) {
+  display: none;
 }
 
 .avatar {
