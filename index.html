@@ -42,7 +42,7 @@
                   <div class="col-sm-12">
                     <h1 class="display-3">Kuzmych Serhii</h1>
 
-                    <ul class="contacts clearfix">
+                    <ul class="contacts">
                       <li>
                         <a
                           href="https://www.linkedin.com/in/serhiikuzmych/"
@@ -143,7 +143,11 @@
                         </a>
                       </li>
                       <li>
-                        <div class="like-widget">
+                        <div
+                          class="like-widget withToolTip"
+                          data-tooltipShowOrder="1"
+                          data-tooltip="click to increment, dbclick to reset"
+                        >
                           <span class="like-txt"
                             >Likes <span id="likeCounter"></span
                           ></span>
@@ -187,7 +191,12 @@
                   <ul class="timeline unselectable">
                     <li>
                       <h3 class="display-6">Projects</h3>
-                      <ul>
+
+                      <ul
+                        class="withToolTip"
+                        data-tooltipShowOrder="2"
+                        data-tooltip="hover over project name element"
+                      >
                         <li>
                           <div class="project-container">
                             <a
@@ -300,54 +309,58 @@
                             </p>
                           </div>
                         </li>
-
-                        <li class="details">
-                          <div
-                            id="labs-check"
-                            class="
-                              d-flex
-                              justify-content-between
-                              bg-info bg-gradient
-                              rounded
-                              p-2
-                              bg-opacity-25
-                            "
-                          >
-                            <span for="labs-check" class="summary">
-                              University labs abstract
-                            </span>
-                            <i class="bi bi-chevron-down"></i>
-                          </div>
-
-                          <div class="labs-content">
-                            <ul class="list-group list-group-flush">
-                              <li class="list-group-item">
-                                Develop websites using js, html, css, libraries,
-                                frameworks and server side technologies
-                              </li>
-                              <li class="list-group-item">
-                                Develop a lot of server side programs
-                              </li>
-                              <li class="list-group-item">
-                                Learn and implement algorithms, data structures,
-                                math problems...
-                              </li>
-                              <li class="list-group-item">
-                                Learn about it infrastructure
-                              </li>
-                              <li class="list-group-item">
-                                Configure at linux terminal
-                              </li>
-                              <li class="list-group-item">
-                                Learn Matlab, Simulink
-                              </li>
-                              <li class="list-group-item">
-                                Learn circuts, microcontrollers, asm
-                              </li>
-                            </ul>
-                          </div>
-                        </li>
                       </ul>
+
+                      <div
+                        class="details withToolTip"
+                        data-tooltipShowOrder="3"
+                        data-tooltip="click on that element to show its content"
+                      >
+                        <div
+                          id="labs-check"
+                          class="
+                            d-flex
+                            justify-content-between
+                            bg-info bg-gradient
+                            rounded
+                            p-2
+                            bg-opacity-25
+                          "
+                        >
+                          <span for="labs-check" class="summary">
+                            University labs abstract
+                          </span>
+                          <i class="bi bi-chevron-down"></i>
+                        </div>
+
+                        <div class="labs-content">
+                          <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                              Develop websites using js, html, css, libraries,
+                              frameworks and server side technologies
+                            </li>
+                            <li class="list-group-item">
+                              Develop a lot of server side programs
+                            </li>
+                            <li class="list-group-item">
+                              Learn and implement algorithms, data structures,
+                              math problems...
+                            </li>
+                            <li class="list-group-item">
+                              Learn about it infrastructure
+                            </li>
+                            <li class="list-group-item">
+                              Configure at linux terminal
+                            </li>
+                            <li class="list-group-item">
+                              Learn Matlab, Simulink
+                            </li>
+                            <li class="list-group-item">
+                              Learn circuts, microcontrollers, asm
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
                     </li>
                   </ul>
                 </div>
@@ -494,7 +507,11 @@
 
       <div class="container">
         <div class="row justify-content-center">
-          <div class="col-lg-5 col-sm-7 page p-5">
+          <div
+            class="col-lg-5 col-sm-7 page p-5 withToolTip"
+            data-tooltipShowOrder="4"
+            data-tooltip="the entered data for this form is validated, so you can not send until you enter valid data"
+          >
             <form
               name="opportunityOffer"
               method="POST"
@@ -551,6 +568,26 @@
       </div>
     </main>
 
+    <div id="hintBig" class="hintJs rounded bg-info bg-gradient transitioned">
+      <div class="position-relative">
+        <div class="progress progress-to-hide w-100">
+          <div
+            class="progress-bar"
+            role="progressbar"
+            style="width: 100%"
+          ></div>
+        </div>
+      </div>
+      <div class="hint-container text-center">
+        <h3 class="m-0">click here to show hints</h3>
+      </div>
+    </div>
+
+    <div id="hintSmall" class="hiddenHintJs rounded bg-info bg-gradient">
+      <i class="bi bi-chevron-double-down"></i>
+    </div>
+
     <script src="./assets/scripts/script.js" defer></script>
+    <script src="./assets/scripts/hintsScript.js" defer></script>
   </body>
 </html>

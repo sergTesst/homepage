@@ -14,19 +14,26 @@ article {
   padding: 0 3vw 0 3vw;
 }
 
-@media only screen and (min-width: 1199px) {
-  .contacts {
-    align-items: center;
-  }
+.contacts {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  text-align: center;
 }
 
-.like-widget {
-  display: flex;
-  justify-content: left;
+.contacts li {
+  padding: 0.5rem;
 }
-@media only screen and (max-width: 767px) {
-  .contacts li .like-widget {
-    justify-content: center;
+
+@media only screen and (min-width: 1404px) {
+  .contacts {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    text-align: center;
+  }
+  .contacts li {
+    padding: 0;
   }
 }
 
@@ -98,17 +105,6 @@ ul {
   list-style: none;
   margin: 0;
   padding: 0;
-}
-
-.contacts > li {
-  float: left;
-  margin: 5px;
-}
-
-.clearfix::after {
-  content: "";
-  clear: both;
-  display: table;
 }
 
 .about > p {
@@ -193,4 +189,66 @@ ul {
 
 .warning {
   border-color: red !important;
+}
+
+.hintJs {
+  position: fixed;
+  top: 0;
+  left: 2rem;
+  right: 2rem;
+  color: #ffffff;
+  font-size: larger;
+}
+
+.transitioned {
+  transition: all 0.5s;
+}
+
+.hiddenHintJs {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  color: #ffffff;
+  padding: 1rem 1.5rem;
+}
+
+.hint-container {
+  padding: 1rem;
+}
+
+.progress-to-hide {
+  height: 0.5rem;
+  position: absolute;
+  top: 0;
+}
+
+.withToolTip {
+  position: relative;
+}
+
+.messageAlert {
+  z-index: 1030;
+  margin: 0;
+  position: absolute;
+  display: none;
+  top: 100%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
+.closeButton {
+  position: absolute;
+  display: block;
+  background: transparent;
+  top: 0;
+  right: 10px;
+  color: darkred;
+  font-size: 110%;
+  transition: all 0.1s;
+}
+
+.closeButton:hover {
+  cursor: pointer;
+  transform: scale(1.1);
 }
