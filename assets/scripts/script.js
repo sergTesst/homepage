@@ -119,6 +119,10 @@ function updateDisplay() {
     submit,
   } = form.elements;
 
+  const emailWarningEl = email
+    .closest(".form-group")
+    .querySelector(".invalid-feedback");
+
   function disableSubmit() {
     submit.setAttribute("disabled", true);
   }
@@ -141,10 +145,16 @@ function updateDisplay() {
     addOrRemoveEmailWarning(isEmailValid, emailIsEmpty);
   }
 
+  function checkEmailValueValid(emailVal) {
+    let notAnyWhiteSpaceAndAtSignOneUnlimited = "[^s@]+";
+    let completeRegEx = `^${notAnyWhiteSpaceAndAtSignOneUnlimited}@${notAnyWhiteSpaceAndAtSignOneUnlimited}\\.${notAnyWhiteSpaceAndAtSignOneUnlimited}$`;
+    const regularEx = new RegExp(completeRegEx);
+    let isEmailValid = regularEx.test(emailVal);
+
+    return isEmailValid;
+  }
+
   function addOrRemoveEmailWarning(isEmailValid, emailIsEmpty) {
-    let emailWarningEl = email
-      .closest(".form-group")
-      .querySelector(".invalid-feedback");
     if (!isEmailValid && !emailIsEmpty) {
       emailWarningEl.innerText =
         "Please provide a valid email like name@domain.com";
@@ -182,37 +192,32 @@ function updateDisplay() {
 
   let allFormElementsAreValid = false;
   function checkFormElementsAreValid() {
+    let nameInputNotEmpty = Boolean(!checkElementValueInEmpty(name));
+    let emailInputNotEmpty = Boolean(!checkElementValueInEmpty(email));
+    let messageTextAreNotEmpty = Boolean(!checkElementValueInEmpty(message));
     let isEmailValid = checkEmailValueValid(email.value.trim());
-    let emailIsEmpty = Boolean(checkElementValueInEmpty(email));
+    let emailIsEmpty = checkElementValueInEmpty(email);
+
     allFormElementsAreValid = Boolean(
-      !checkElementValueInEmpty(name) &&
-        !emailIsEmpty &&
-        !checkElementValueInEmpty(message) &&
+      nameInputNotEmpty &&
+        emailInputNotEmpty &&
+        messageTextAreNotEmpty &&
         isEmailValid
     );
+
     if (allFormElementsAreValid) {
       submit.removeAttribute("disabled");
+      removeEmailWarning(isEmailValid, emailIsEmpty);
     } else {
       disableSubmit();
-      removeEmailWarning(isEmailValid, emailIsEmpty);
     }
   }
+
   function removeEmailWarning(isEmailValid, emailIsEmpty) {
-    let emailWarningEl = email
-      .closest(".form-group")
-      .querySelector(".invalid-feedback");
     if (isEmailValid && !emailIsEmpty) {
-      if (emailWarningEl.style.display === "block")
+      if (emailWarningEl.style.display === "block") {
         emailWarningEl.style.display = "none";
+      }
     }
-  }
-
-  function checkEmailValueValid(emailVal) {
-    let notAnyWhiteSpaceAndAtSignOneUnlimited = "[^s@]+";
-    let completeRegEx = `^${notAnyWhiteSpaceAndAtSignOneUnlimited}@${notAnyWhiteSpaceAndAtSignOneUnlimited}\\.${notAnyWhiteSpaceAndAtSignOneUnlimited}$`;
-    const regularEx = new RegExp(completeRegEx);
-    let isEmailValid = regularEx.test(emailVal);
-
-    return isEmailValid;
   }
 })();
