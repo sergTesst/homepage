@@ -130,6 +130,7 @@ function updateDisplay() {
   function focusOutHandler(e) {
     const { target: focusOutElement } = e;
     addWarningIfEmpty(focusOutElement);
+
     let elementIsEmail = focusOutElement === email;
     if (elementIsEmail) handlerEmailValid();
   }
@@ -169,6 +170,7 @@ function updateDisplay() {
   form.addEventListener("keydown", keyUpDownInputHandler);
   form.addEventListener("keyup", keyUpDownInputHandler);
   form.addEventListener("input", keyUpDownInputHandler);
+
   function keyUpDownInputHandler(e) {
     const { target: inputingelem } = e;
     if (checkElementValueInEmpty(inputingelem)) {
