@@ -252,3 +252,9 @@ ul {
   cursor: pointer;
   transform: scale(1.1);
 }
+
+form[name="opportunityOffer"] input[type="submit"]:disabled {
+  background-color: #ccc;
+  color: black !important;
+  border: solid 1px #ccc;
+}
